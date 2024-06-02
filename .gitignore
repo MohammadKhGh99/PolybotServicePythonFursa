@@ -3,6 +3,7 @@ polybot/photos
 polybot/test/
 photos
 
+deploy.sh
 polybot/cert.pem
 polybot/private.key
 

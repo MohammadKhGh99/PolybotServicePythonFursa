@@ -23,4 +23,5 @@ jobs:
           chmod 400 mykey.pem
 
           # connect to ec2 using ssh
-          ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "cd PolybotServicePythonFursa && git pull -X theirs origin main && sudo systemctl daemon-reload && sudo systemctl restart telegram_bot_prod.service && sudo systemctl enable telegram_bot_prod.service"
+          ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "cd PolybotServicePythonFursa && bash deploy.sh"
+          #ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "cd PolybotServicePythonFursa && git pull -X theirs origin main && sudo systemctl daemon-reload && sudo systemctl restart telegram_bot_prod.service && sudo systemctl enable telegram_bot_prod.service"
