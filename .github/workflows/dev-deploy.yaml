@@ -1,0 +1,27 @@
+# .github/workflows/dev-deploy.yaml
+name: Dev Polybot Service Deployment
+
+on:
+  push:
+    branches:
+      - dev
+
+env:
+  EC2_PUBLIC_IP: 44.192.68.234
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+jobs:
+  Deploy:
+    name: Deploy in EC2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the app code
+        uses: actions/checkout@v2
+      - name: SSH to EC2 instance
+        run: |
+          echo "$SSH_PRIVATE_KEY" > mykey.pem
+          chmod 400 mykey.pem
+
+          # connect to ec2 using ssh
+          ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "sudo systemctl stop telegram_bot_dev.service && sudo systemctl restart telegram_bot_dev.service"
+         # ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "sudo systemctl daemon-reload && sudo systemctl restart telegram_bot_dev.service && sudo systemctl enable telegram_bot_dev.service"
