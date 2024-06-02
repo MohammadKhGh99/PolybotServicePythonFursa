@@ -24,4 +24,4 @@ def webhook():
 if __name__ == "__main__":
     bot = ImageProcessingBot(TELEGRAM_TOKEN, TELEGRAM_APP_URL)
 
-    app.run(host='0.0.0.0', port=8443, ssl_context=("cert.pem", "private.key"))
+    app.run(host='0.0.0.0', port=8443, ssl_context=("polybot/cert.pem", "polybot/private.key"))
