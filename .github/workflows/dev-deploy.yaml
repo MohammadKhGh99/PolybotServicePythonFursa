@@ -7,7 +7,7 @@ on:
       - dev
 
 env:
-  EC2_PUBLIC_IP: 3.237.34.229
+  EC2_PUBLIC_IP: 44.223.45.45
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
@@ -24,5 +24,3 @@ jobs:
 
           # connect to ec2 using ssh
           ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "cd PolybotServicePythonFursa && bash deploy.sh"
-          #ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "sudo systemctl stop telegram_bot_dev.service && sudo systemctl restart telegram_bot_dev.service"
-          #ssh -o StrictHostKeyChecking=accept-new -i mykey.pem ubuntu@$EC2_PUBLIC_IP "sudo systemctl daemon-reload && sudo systemctl restart telegram_bot_dev.service && sudo systemctl enable telegram_bot_dev.service"
