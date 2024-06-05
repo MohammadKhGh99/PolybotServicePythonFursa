@@ -102,6 +102,8 @@ class ImageProcessingBot(Bot):
                 self.send_text(msg['chat']['id'], 'Hey, Don\'t shout on me, I\'m just a bot')
             elif msg["text"] == "What can you do?":
                 self.send_text(msg['chat']['id'], "Really!\nI have told you before")
+            elif msg["text"] == "bye":
+                self.send_text(msg['chat']['id'], "Have a nice day")
             else:
                 self.send_text(msg['chat']['id'], f'Heeeey, Don\'t \"{msg["text"]}\" me!!')
         else:
