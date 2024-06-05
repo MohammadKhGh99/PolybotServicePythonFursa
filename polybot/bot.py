@@ -142,4 +142,4 @@ class ImageProcessingBot(Bot):
                 logger.error(f'Error: {e}')
                 self.send_text(msg['chat']['id'], 'something went wrong...\n'
                                                   'please try again\n\n'
-                                                  '{usage_msg}')
+                                                  f'{usage_msg}')
